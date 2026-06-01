@@ -5,7 +5,7 @@ import Header from '../components/Header.astro';
 
 const SITE_TITLE = "Ronnie's AI Blog";
 const SITE_DESCRIPTION =
-	"Thoughts, experiments, and projects at the intersection of artificial intelligence, software engineering, and automation.";
+	"Building AI systems, semantic search engines, RAG pipelines, developer tools, and intelligent automation.";
 ---
 
 <!doctype html>
@@ -13,25 +13,29 @@ const SITE_DESCRIPTION =
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
+
 	<body>
 		<Header />
 
 		<main class="home">
 			<section class="hero">
-				<p class="eyebrow">AI · Software Engineering · Automation</p>
+				<p class="eyebrow">
+					AI • SOFTWARE ENGINEERING • AUTOMATION
+				</p>
 
 				<h1>Ronnie's AI Blog</h1>
 
 				<p class="subtitle">
-					Thoughts, experiments, and projects at the intersection of artificial
-					intelligence, software engineering, and automation.
+					Building AI systems, semantic search engines, RAG pipelines,
+					developer tools, and intelligent automation.
 				</p>
 
 				<p class="description">
-					I write about building real AI systems—from RAG architectures and
-					semantic search engines to autonomous workflows and developer tools.
-					This is a place to document ideas, share technical discoveries, and
-					explore how AI can augment human knowledge and decision-making.
+					I write about real-world AI engineering: retrieval-augmented generation,
+					vector search, embeddings, agent workflows, developer tooling,
+					infrastructure, and the lessons learned from building production systems.
+					This blog serves as both a technical notebook and a public record of
+					experiments, projects, and discoveries along the way.
 				</p>
 
 				<div class="motto">
@@ -54,7 +58,12 @@ const SITE_DESCRIPTION =
 			#05070a;
 		color: #e5e7eb;
 		font-family:
-			Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+			Inter,
+			ui-sans-serif,
+			system-ui,
+			-apple-system,
+			BlinkMacSystemFont,
+			"Segoe UI",
 			sans-serif;
 	}
 
@@ -63,21 +72,21 @@ const SITE_DESCRIPTION =
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 5rem 1.5rem;
+		padding: 5rem 2rem;
 	}
 
 	.hero {
-		width: min(900px, 100%);
+		width: min(1200px, 100%);
 		padding: 4rem;
-		border: 1px solid rgba(148, 163, 184, 0.18);
-		border-radius: 32px;
-		background: rgba(15, 23, 42, 0.72);
-		box-shadow: 0 30px 100px rgba(0, 0, 0, 0.45);
+		border: 1px solid rgba(148, 163, 184, 0.12);
+		border-radius: 28px;
+		background: rgba(15, 23, 42, 0.55);
+		box-shadow: 0 30px 100px rgba(0, 0, 0, 0.35);
 		backdrop-filter: blur(18px);
 	}
 
 	.eyebrow {
-		margin: 0 0 1.5rem;
+		margin: 0 0 1rem;
 		color: #67e8f9;
 		font-size: 0.78rem;
 		font-weight: 700;
@@ -87,54 +96,59 @@ const SITE_DESCRIPTION =
 
 	h1 {
 		margin: 0;
-		max-width: 760px;
+		max-width: 1000px;
 		color: #ffffff;
-		font-size: clamp(3.2rem, 8vw, 6.6rem);
-		line-height: 0.92;
-		letter-spacing: -0.075em;
+		font-size: clamp(3rem, 5vw, 4.8rem);
+		line-height: 1;
+		letter-spacing: -0.05em;
+		font-weight: 800;
 	}
 
 	.subtitle {
-		margin: 2rem 0 0;
-		max-width: 760px;
+		margin-top: 1.5rem;
+		max-width: 950px;
 		color: #d1d5db;
-		font-size: clamp(1.25rem, 2vw, 1.65rem);
-		line-height: 1.45;
+		font-size: clamp(1.2rem, 2vw, 1.55rem);
+		line-height: 1.55;
+		font-weight: 500;
 	}
 
 	.description {
-		margin: 1.5rem 0 0;
-		max-width: 720px;
+		margin-top: 1.75rem;
+		max-width: 950px;
 		color: #9ca3af;
-		font-size: 1.06rem;
-		line-height: 1.85;
+		font-size: 1.08rem;
+		line-height: 1.9;
 	}
 
 	.motto {
-		margin-top: 2.75rem;
+		margin-top: 2.5rem;
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.75rem;
 	}
 
 	.motto span {
-		border: 1px solid rgba(103, 232, 249, 0.24);
+		border: 1px solid rgba(103, 232, 249, 0.2);
 		border-radius: 999px;
-		padding: 0.75rem 1rem;
-		background: rgba(8, 145, 178, 0.1);
+		padding: 0.8rem 1.2rem;
+		background: rgba(8, 145, 178, 0.08);
 		color: #ecfeff;
 		font-size: 0.95rem;
 		font-weight: 700;
 	}
 
-	@media (max-width: 720px) {
+	@media (max-width: 768px) {
 		.home {
-			padding: 3rem 1rem;
+			padding: 2rem 1rem;
 		}
 
 		.hero {
 			padding: 2rem;
-			border-radius: 24px;
+		}
+
+		h1 {
+			font-size: clamp(2.5rem, 10vw, 3.8rem);
 		}
 	}
 </style>
