@@ -28,7 +28,7 @@ const fileName = `${title
       }
 
       .article-terminal {
-        width: min(1400px, 100%);
+        width: min(1600px, 96vw);
         margin: 0 auto;
         border: 1px solid rgba(103, 232, 249, 0.25);
         border-radius: 12px;
@@ -91,7 +91,7 @@ const fileName = `${title
       }
 
       .article-body {
-        padding: clamp(2rem, 4vw, 4rem) clamp(2rem, 5vw, 5rem);
+        padding: 3rem 3rem;
       }
 
       .command {
@@ -110,9 +110,10 @@ const fileName = `${title
       }
 
       h1 {
+        max-width: 1100px;
         margin: 0 0 1rem;
         color: white;
-        font-size: clamp(2.4rem, 5vw, 4.2rem);
+        font-size: clamp(3rem, 4vw, 5rem);
         line-height: 1.05;
         font-weight: 760;
         letter-spacing: -0.05em;
@@ -133,7 +134,8 @@ const fileName = `${title
       }
 
       .prose {
-        max-width: 1100px;
+        max-width: none;
+        width: 100%;
         color: #d1d5db;
         font-size: 1.05rem;
         line-height: 1.9;
@@ -196,6 +198,21 @@ const fileName = `${title
 
         .terminal-title {
           font-size: 0.7rem;
+        }
+
+        .prose :global(p) {
+          max-width: 1000px;
+        }
+
+        .prose :global(h2),
+        .prose :global(h3),
+        .prose :global(h4),
+        .prose :global(ul),
+        .prose :global(ol),
+        .prose :global(blockquote),
+        .prose :global(pre),
+        .prose :global(table) {
+          max-width: 1200px;
         }
       }
     </style>
