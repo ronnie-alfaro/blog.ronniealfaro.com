@@ -23,22 +23,54 @@ const fileName = `${title
     <BaseHead title={title} description={description} />
 
     <style>
+      :global(body) {
+        margin: 0;
+        background:
+          linear-gradient(rgba(103, 232, 249, 0.035) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(103, 232, 249, 0.035) 1px,
+            transparent 1px
+          ),
+          radial-gradient(
+            circle at 18% 8%,
+            rgba(34, 211, 238, 0.14),
+            transparent 34rem
+          ),
+          radial-gradient(
+            circle at 85% 95%,
+            rgba(16, 185, 129, 0.1),
+            transparent 34rem
+          ),
+          #020607;
+        background-size:
+          48px 48px,
+          48px 48px,
+          auto,
+          auto,
+          auto;
+        color: #d1fae5;
+      }
+
       main {
-        padding: 2rem 1rem 4rem;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 2rem 1.5rem 4rem;
       }
 
       .article-terminal {
-        width: min(1600px, 96vw);
+        width: min(1500px, 94vw);
         margin: 0 auto;
-        border: 1px solid rgba(103, 232, 249, 0.25);
+        border: 1px solid rgba(103, 232, 249, 0.28);
         border-radius: 12px;
         overflow: hidden;
         background: linear-gradient(
           180deg,
           rgba(8, 47, 55, 0.92),
-          rgba(2, 16, 18, 0.95)
+          rgba(2, 16, 18, 0.96)
         );
         box-shadow:
+          0 0 0 1px rgba(20, 184, 166, 0.08),
           0 30px 110px rgba(0, 0, 0, 0.55),
           0 0 80px rgba(34, 211, 238, 0.08);
       }
@@ -50,7 +82,7 @@ const fileName = `${title
         align-items: center;
         padding: 0 1rem;
         background: rgba(1, 9, 12, 0.95);
-        border-bottom: 1px solid rgba(103, 232, 249, 0.18);
+        border-bottom: 1px solid rgba(103, 232, 249, 0.2);
       }
 
       .traffic-lights {
@@ -82,22 +114,28 @@ const fileName = `${title
         color: #94a3b8;
         font-size: 0.8rem;
         font-weight: 700;
+        font-family: "SFMono-Regular", Consolas, Menlo, monospace;
       }
 
       .status {
         color: #86efac;
         font-size: 0.75rem;
-        font-weight: 700;
+        font-weight: 800;
+        font-family: "SFMono-Regular", Consolas, Menlo, monospace;
       }
 
       .article-body {
-        padding: 3rem 3rem;
+        padding: clamp(2rem, 4vw, 4.5rem);
       }
 
       .command {
+        max-width: 1300px;
         color: #86efac;
-        font-weight: 700;
+        font-weight: 800;
+        font-size: 1rem;
+        line-height: 1.7;
         margin-bottom: 2rem;
+        font-family: "SFMono-Regular", Consolas, Menlo, monospace;
       }
 
       .meta {
@@ -105,26 +143,35 @@ const fileName = `${title
         flex-wrap: wrap;
         gap: 1rem;
         color: #67e8f9;
-        font-size: 0.85rem;
-        margin-bottom: 2rem;
+        font-size: 0.9rem;
+        margin-bottom: 2.25rem;
+        font-family: "SFMono-Regular", Consolas, Menlo, monospace;
       }
 
       h1 {
-        max-width: 1100px;
-        margin: 0 0 1rem;
+        max-width: 1300px;
+        margin: 0 0 1.25rem;
         color: white;
-        font-size: clamp(3rem, 4vw, 5rem);
-        line-height: 1.05;
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        font-size: clamp(3rem, 4.4vw, 5.4rem);
+        line-height: 1.02;
         font-weight: 760;
-        letter-spacing: -0.05em;
+        letter-spacing: -0.055em;
       }
 
       .description {
-        max-width: 900px;
+        max-width: 1150px;
         color: #94a3b8;
         font-size: 1.08rem;
-        line-height: 1.8;
-        margin-bottom: 3rem;
+        line-height: 1.85;
+        margin-bottom: 3.25rem;
       }
 
       .hero-image img {
@@ -134,22 +181,40 @@ const fileName = `${title
       }
 
       .prose {
-        max-width: none;
         width: 100%;
+        max-width: none;
         color: #d1d5db;
-        font-size: 1.05rem;
-        line-height: 1.9;
+        font-size: 1.06rem;
+        line-height: 1.95;
+      }
+
+      .prose :global(p) {
+        max-width: 1050px;
+      }
+
+      .prose :global(h2),
+      .prose :global(h3),
+      .prose :global(h4),
+      .prose :global(ul),
+      .prose :global(ol),
+      .prose :global(blockquote),
+      .prose :global(pre),
+      .prose :global(table) {
+        max-width: 1200px;
       }
 
       .prose :global(h2) {
         color: #67e8f9;
-        margin-top: 3rem;
-        line-height: 1.2;
+        margin-top: 4rem;
+        margin-bottom: 1rem;
+        line-height: 1.18;
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
       }
 
       .prose :global(h3) {
         color: #a5f3fc;
-        margin-top: 2rem;
+        margin-top: 2.5rem;
+        margin-bottom: 0.75rem;
       }
 
       .prose :global(strong) {
@@ -192,27 +257,20 @@ const fileName = `${title
           padding: 1rem 0.75rem 3rem;
         }
 
+        .article-terminal {
+          width: 100%;
+        }
+
         .article-body {
-          padding: clamp(2rem, 3vw, 4rem) clamp(2rem, 4vw, 6rem);
+          padding: 1.5rem;
+        }
+
+        h1 {
+          font-size: clamp(2.4rem, 12vw, 3.5rem);
         }
 
         .terminal-title {
           font-size: 0.7rem;
-        }
-
-        .prose :global(p) {
-          max-width: 1000px;
-        }
-
-        .prose :global(h2),
-        .prose :global(h3),
-        .prose :global(h4),
-        .prose :global(ul),
-        .prose :global(ol),
-        .prose :global(blockquote),
-        .prose :global(pre),
-        .prose :global(table) {
-          max-width: 1200px;
         }
       }
     </style>
