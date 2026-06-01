@@ -1,287 +1,261 @@
 ---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import Header from "../components/Header.astro";
 
-import { Image } from 'astro:assets';
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
-import Header from '../components/Header.astro';
+type Props = CollectionEntry<"blog">["data"];
 
-type Props = CollectionEntry<'blog'>['data'];
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
-const {
-title,
-description,
-pubDate,
-updatedDate,
-heroImage
-} = Astro.props;
-----------------
+const fileName = `${title
+  .toLowerCase()
+  .replaceAll(":", "")
+  .replaceAll(",", "")
+  .replaceAll(" ", "-")}.md`;
+---
 
+<!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-
-```
-	<style>
-		main {
-			padding: 2rem 1rem 4rem;
-		}
-
-		.article-terminal {
-			width: min(1280px, 100%);
-			margin: 0 auto;
-
-			border: 1px solid rgba(103, 232, 249, 0.25);
-			border-radius: 12px;
-			overflow: hidden;
-
-			background:
-				linear-gradient(
-					180deg,
-					rgba(8, 47, 55, 0.92),
-					rgba(2, 16, 18, 0.95)
-				);
-
-			box-shadow:
-				0 30px 110px rgba(0, 0, 0, 0.55),
-				0 0 80px rgba(34, 211, 238, 0.08);
-		}
-
-		.terminal-bar {
-			height: 42px;
-
-			display: grid;
-			grid-template-columns: auto 1fr auto;
-			align-items: center;
-
-			padding: 0 1rem;
-
-			background: rgba(1, 9, 12, 0.95);
-
-			border-bottom:
-				1px solid rgba(103, 232, 249, 0.18);
-		}
-
-		.traffic-lights {
-			display: flex;
-			gap: 0.5rem;
-		}
-
-		.traffic-lights span {
-			width: 10px;
-			height: 10px;
-			border-radius: 999px;
-			display: block;
-		}
-
-		.red {
-			background: #fb7185;
-		}
-
-		.yellow {
-			background: #facc15;
-		}
-
-		.green {
-			background: #4ade80;
-		}
-
-		.terminal-title {
-			text-align: center;
-			color: #94a3b8;
-			font-size: 0.8rem;
-			font-weight: 700;
-		}
-
-		.status {
-			color: #86efac;
-			font-size: 0.75rem;
-			font-weight: 700;
-		}
-
-		.article-body {
-			padding:
-				clamp(2rem, 4vw, 4rem)
-				clamp(2rem, 5vw, 5rem);
-		}
-
-		.command {
-			color: #86efac;
-			font-weight: 700;
-			margin-bottom: 2rem;
-		}
-
-		.meta {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 1rem;
-
-			color: #67e8f9;
-			font-size: 0.85rem;
-
-			margin-bottom: 2rem;
-		}
-
-		h1 {
-			font-size:
-				clamp(2.8rem, 5vw, 4.5rem);
-
-			line-height: 1.05;
-
-			margin-bottom: 1rem;
-
-			color: white;
-
-			font-weight: 800;
-
-			letter-spacing: -0.05em;
-		}
-
-		.description {
-			color: #94a3b8;
-			font-size: 1.1rem;
-			line-height: 1.8;
-			margin-bottom: 3rem;
-		}
-
-		.hero-image img {
-			width: 100%;
-			border-radius: 12px;
-			margin-bottom: 3rem;
-		}
-
-		.prose {
-			max-width: 900px;
-
-			color: #d1d5db;
-
-			font-size: 1.05rem;
-			line-height: 1.9;
-		}
-
-		.prose h2 {
-			color: #67e8f9;
-			margin-top: 3rem;
-		}
-
-		.prose h3 {
-			color: #a5f3fc;
-		}
-
-		.prose strong {
-			color: white;
-		}
-
-		.prose blockquote {
-			border-left:
-				3px solid rgba(103,232,249,.5);
-
-			padding-left: 1rem;
-
-			color: #94a3b8;
-
-			font-style: italic;
-		}
-
-		.prose code {
-			background:
-				rgba(8,145,178,.15);
-
-			padding: .15rem .4rem;
-
-			border-radius: 4px;
-		}
-
-		.prose pre {
-			background:
-				rgba(1,9,12,.9);
-
-			border:
-				1px solid rgba(103,232,249,.15);
-
-			padding: 1rem;
-
-			border-radius: 8px;
-
-			overflow-x: auto;
-		}
-	</style>
-</head>
-
-<body>
-	<Header />
-
-	<main>
-		<article class="article-terminal">
-
-			<div class="terminal-bar">
-				<div class="traffic-lights">
-					<span class="red"></span>
-					<span class="yellow"></span>
-					<span class="green"></span>
-				</div>
-
-				<div class="terminal-title">
-					ronnie-ai-blog:~/posts
-				</div>
-
-				<div class="status">
-					published
-				</div>
-			</div>
-
-			<div class="article-body">
-
-				<div class="command">
-					$ cat {title.toLowerCase().replaceAll(' ', '-')}.md
-				</div>
-
-				<div class="meta">
-					<span>
-						Published:
-						<FormattedDate date={pubDate} />
-					</span>
-
-					{
-						updatedDate && (
-							<span>
-								Updated:
-								<FormattedDate date={updatedDate} />
-							</span>
-						)
-					}
-				</div>
-
-				<h1>{title}</h1>
-
-				<p class="description">
-					{description}
-				</p>
-
-				{
-					heroImage && (
-						<div class="hero-image">
-							<Image
-								width={1200}
-								height={600}
-								src={heroImage}
-								alt=""
-							/>
-						</div>
-					)
-				}
-
-				<div class="prose">
-					<slot />
-				</div>
-
-			</div>
-		</article>
-	</main>
-
-	<Footer />
-</body>
-```
-
+  <head>
+    <BaseHead title={title} description={description} />
+
+    <style>
+      main {
+        padding: 2rem 1rem 4rem;
+      }
+
+      .article-terminal {
+        width: min(1280px, 100%);
+        margin: 0 auto;
+        border: 1px solid rgba(103, 232, 249, 0.25);
+        border-radius: 12px;
+        overflow: hidden;
+        background: linear-gradient(
+          180deg,
+          rgba(8, 47, 55, 0.92),
+          rgba(2, 16, 18, 0.95)
+        );
+        box-shadow:
+          0 30px 110px rgba(0, 0, 0, 0.55),
+          0 0 80px rgba(34, 211, 238, 0.08);
+      }
+
+      .terminal-bar {
+        height: 42px;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        padding: 0 1rem;
+        background: rgba(1, 9, 12, 0.95);
+        border-bottom: 1px solid rgba(103, 232, 249, 0.18);
+      }
+
+      .traffic-lights {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .traffic-lights span {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        display: block;
+      }
+
+      .red {
+        background: #fb7185;
+      }
+
+      .yellow {
+        background: #facc15;
+      }
+
+      .green {
+        background: #4ade80;
+      }
+
+      .terminal-title {
+        text-align: center;
+        color: #94a3b8;
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      .status {
+        color: #86efac;
+        font-size: 0.75rem;
+        font-weight: 700;
+      }
+
+      .article-body {
+        padding: clamp(2rem, 4vw, 4rem) clamp(2rem, 5vw, 5rem);
+      }
+
+      .command {
+        color: #86efac;
+        font-weight: 700;
+        margin-bottom: 2rem;
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        color: #67e8f9;
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+      }
+
+      h1 {
+        margin: 0 0 1rem;
+        color: white;
+        font-size: clamp(2.4rem, 5vw, 4.2rem);
+        line-height: 1.05;
+        font-weight: 760;
+        letter-spacing: -0.05em;
+      }
+
+      .description {
+        max-width: 900px;
+        color: #94a3b8;
+        font-size: 1.08rem;
+        line-height: 1.8;
+        margin-bottom: 3rem;
+      }
+
+      .hero-image img {
+        width: 100%;
+        border-radius: 12px;
+        margin-bottom: 3rem;
+      }
+
+      .prose {
+        max-width: 900px;
+        color: #d1d5db;
+        font-size: 1.05rem;
+        line-height: 1.9;
+      }
+
+      .prose :global(h2) {
+        color: #67e8f9;
+        margin-top: 3rem;
+        line-height: 1.2;
+      }
+
+      .prose :global(h3) {
+        color: #a5f3fc;
+        margin-top: 2rem;
+      }
+
+      .prose :global(strong) {
+        color: white;
+      }
+
+      .prose :global(a) {
+        color: #67e8f9;
+      }
+
+      .prose :global(blockquote) {
+        border-left: 3px solid rgba(103, 232, 249, 0.5);
+        margin-left: 0;
+        padding-left: 1rem;
+        color: #94a3b8;
+        font-style: italic;
+      }
+
+      .prose :global(code) {
+        background: rgba(8, 145, 178, 0.15);
+        padding: 0.15rem 0.4rem;
+        border-radius: 4px;
+      }
+
+      .prose :global(pre) {
+        background: rgba(1, 9, 12, 0.9);
+        border: 1px solid rgba(103, 232, 249, 0.15);
+        padding: 1rem;
+        border-radius: 8px;
+        overflow-x: auto;
+      }
+
+      .prose :global(ul),
+      .prose :global(ol) {
+        padding-left: 1.5rem;
+      }
+
+      @media (max-width: 720px) {
+        main {
+          padding: 1rem 0.75rem 3rem;
+        }
+
+        .article-body {
+          padding: 1.5rem;
+        }
+
+        .terminal-title {
+          font-size: 0.7rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <Header />
+
+    <main>
+      <article class="article-terminal">
+        <div class="terminal-bar">
+          <div class="traffic-lights">
+            <span class="red"></span>
+            <span class="yellow"></span>
+            <span class="green"></span>
+          </div>
+
+          <div class="terminal-title">ronnie-ai-blog:~/posts</div>
+
+          <div class="status">published</div>
+        </div>
+
+        <div class="article-body">
+          <div class="command">$ cat {fileName}</div>
+
+          <div class="meta">
+            <span>
+              Published:
+              <FormattedDate date={pubDate} />
+            </span>
+
+            {
+              updatedDate && (
+                <span>
+                  Updated:
+                  <FormattedDate date={updatedDate} />
+                </span>
+              )
+            }
+          </div>
+
+          <h1>{title}</h1>
+
+          <p class="description">{description}</p>
+
+          {
+            heroImage && (
+              <div class="hero-image">
+                <Image width={1200} height={600} src={heroImage} alt="" />
+              </div>
+            )
+          }
+
+          <div class="prose">
+            <slot />
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <Footer />
+  </body>
 </html>
