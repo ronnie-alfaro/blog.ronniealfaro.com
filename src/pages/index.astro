@@ -85,12 +85,12 @@ const SITE_DESCRIPTION =
       radial-gradient(
         circle at 20% 10%,
         rgba(34, 211, 238, 0.14),
-        transparent 32rem
+        transparent 34rem
       ),
       radial-gradient(
         circle at 80% 90%,
         rgba(16, 185, 129, 0.1),
-        transparent 32rem
+        transparent 34rem
       ),
       #020607;
     background-size:
@@ -105,20 +105,22 @@ const SITE_DESCRIPTION =
   }
 
   .page-shell {
-    min-height: 78vh;
+    min-height: calc(100vh - 72px);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3rem 1.25rem 4rem;
+    padding: 3rem 1.5rem 4rem;
+    box-sizing: border-box;
   }
 
   .terminal-window {
-    width: min(1400px, 100%);
+    width: min(1500px, 94vw);
+    margin: 0 auto;
     border: 1px solid rgba(103, 232, 249, 0.28);
     border-radius: 12px;
     overflow: hidden;
     background:
-      linear-gradient(180deg, rgba(8, 47, 55, 0.92), rgba(2, 16, 18, 0.94)),
+      linear-gradient(180deg, rgba(8, 47, 55, 0.92), rgba(2, 16, 18, 0.96)),
       rgba(2, 16, 18, 0.96);
     box-shadow:
       0 0 0 1px rgba(20, 184, 166, 0.08),
@@ -129,11 +131,11 @@ const SITE_DESCRIPTION =
   .terminal-bar {
     height: 42px;
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
     padding: 0 1rem;
     border-bottom: 1px solid rgba(103, 232, 249, 0.22);
-    background: rgba(1, 9, 12, 0.92);
+    background: rgba(1, 9, 12, 0.95);
   }
 
   .traffic-lights {
@@ -162,6 +164,7 @@ const SITE_DESCRIPTION =
   }
 
   .terminal-title {
+    justify-self: center;
     color: #94a3b8;
     font-size: 0.78rem;
     font-weight: 700;
@@ -176,7 +179,7 @@ const SITE_DESCRIPTION =
   }
 
   .terminal-body {
-    padding: clamp(2.5rem, 5vw, 4.8rem);
+    padding: clamp(2.5rem, 4vw, 4.5rem);
   }
 
   .command {
@@ -188,7 +191,7 @@ const SITE_DESCRIPTION =
 
   h1 {
     margin: 0;
-    max-width: 1100px;
+    max-width: 1200px;
     color: #f8fafc;
     font-family:
       Inter,
@@ -198,23 +201,23 @@ const SITE_DESCRIPTION =
       BlinkMacSystemFont,
       "Segoe UI",
       sans-serif;
-    font-size: clamp(3.4rem, 6vw, 5.4rem);
-    line-height: 1;
-    letter-spacing: -0.055em;
-    font-weight: 760;
+    font-size: clamp(3.8rem, 5.2vw, 6.4rem);
+    line-height: 0.98;
+    letter-spacing: -0.065em;
+    font-weight: 740;
   }
 
   .subtitle {
-    margin: 1.2rem 0 0;
-    max-width: 850px;
+    margin: 1.25rem 0 0;
+    max-width: 1050px;
     color: #67e8f9;
-    font-size: clamp(1rem, 2vw, 1.28rem);
-    line-height: 1.55;
+    font-size: clamp(1.05rem, 1.45vw, 1.35rem);
+    line-height: 1.6;
   }
 
   .description {
-    margin: 1.5rem 0 0;
-    max-width: 920px;
+    margin: 1.6rem 0 0;
+    max-width: 1100px;
     color: #cbd5e1;
     font-size: 1rem;
     line-height: 1.85;
@@ -278,7 +281,11 @@ const SITE_DESCRIPTION =
   @media (max-width: 720px) {
     .page-shell {
       align-items: flex-start;
-      padding-top: 1.5rem;
+      padding: 1.5rem 0.75rem 3rem;
+    }
+
+    .terminal-window {
+      width: 100%;
     }
 
     .terminal-body {
@@ -287,14 +294,6 @@ const SITE_DESCRIPTION =
 
     h1 {
       font-size: clamp(2.7rem, 14vw, 4rem);
-    }
-
-    .terminal-bar {
-      grid-template-columns: auto 1fr auto;
-    }
-
-    .terminal-title {
-      justify-self: center;
     }
   }
 </style>
