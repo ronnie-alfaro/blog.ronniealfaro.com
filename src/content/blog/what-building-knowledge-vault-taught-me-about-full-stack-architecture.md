@@ -1,3 +1,9 @@
+---
+title: "What Building Knowledge Vault Taught Me About Full-Stack Architecture"
+description: "Bulding to learn or learning by bulding."
+pubDate: 2026-06-05
+tags: ["AI", "Agents", "Supabase", "PgSQL", "Vectors"]
+---
 # What Building Knowledge Vault Taught Me About Full-Stack Architecture
 
 Knowledge Vault started as an excuse to learn.
