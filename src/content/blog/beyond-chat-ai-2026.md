@@ -7,7 +7,8 @@ tags: ["AI", "Agents", "RAG", "World Models", "Sovereign AI"]
 
 ## Introduction: AI's "Rotary Phone" Moment
 
-Viewed from the sophistication of 2026, the launch of ChatGPT in 2022 now feels like a relic from a simpler era. In a recent interview with The Rundown AI in May 2026, Sundar Pichai accurately described that period as artificial intelligence's "rotary phone moment": a functional technology, but still limited and tied to an interface that would soon feel obsolete.
+Viewed from the sophistication of 2026, the launch of ChatGPT in 2022 now feels like a relic from a simpler era. 
+In a recent interview with The Rundown AI in May 2026, Sundar Pichai accurately described that period as artificial intelligence's "rotary phone moment": a functional technology, but still limited and tied to an interface that would soon feel obsolete.
 
 We are moving from AI that simply "talks" to AI that "does" - and, more importantly, to AI that understands the fabric of the physical world. We are no longer interacting only with chatbots, but with ecosystems of autonomous agents. This transformation forces us to ask a fundamental question about our future strategy: are we prepared to delegate autonomy to systems that operate outside constant human supervision?
 
