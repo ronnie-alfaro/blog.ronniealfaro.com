@@ -125,6 +125,30 @@ const latestPosts = (await getCollection("blog"))
             <a href="/blog">open blog</a>
             <a href="/about">about author</a>
           </div>
+
+          <details class="badges-command">
+            <summary>
+              <span class="prompt-symbol">$</span>
+              <span class="command-name">badges</span>
+              <span class="command-hint">click to run</span>
+            </summary>
+
+            <div class="badges-output">
+              <a
+                href="https://www.credly.com/users/ronnie-alfaro/badges"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View Ronnie Alfaro's badges on Credly"
+              >
+                <img
+                  src="https://credly-readme-stats.onrender.com/api/overview?username=ralfaro&hide_border=true&hide_title=true&custom_title=Ronnie%27s+badges"
+                  alt="Ronnie's badges"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            </div>
+          </details>
         </div>
       </section>
     </main>
@@ -426,6 +450,72 @@ const latestPosts = (await getCollection("blog"))
 
   .terminal-prompt a:hover {
     background: rgba(8, 145, 178, 0.18);
+  }
+
+  .badges-command {
+    margin-top: 1rem;
+    font-family: Consolas, Menlo, monospace;
+  }
+
+  .badges-command summary {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid rgba(103, 232, 249, 0.24);
+    border-radius: 8px;
+    background: rgba(8, 145, 178, 0.08);
+    color: #67e8f9;
+    cursor: pointer;
+    list-style: none;
+    transition:
+      background 160ms ease,
+      border-color 160ms ease;
+  }
+
+  .badges-command summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .badges-command summary:hover,
+  .badges-command[open] summary {
+    border-color: rgba(103, 232, 249, 0.4);
+    background: rgba(8, 145, 178, 0.18);
+  }
+
+  .prompt-symbol {
+    color: #86efac;
+    font-weight: 700;
+  }
+
+  .command-name {
+    font-weight: 700;
+  }
+
+  .command-hint {
+    color: #64748b;
+    font-size: 0.72rem;
+  }
+
+  .badges-output {
+    max-width: 920px;
+    margin-top: 1rem;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    border: 1px solid rgba(103, 232, 249, 0.18);
+    border-radius: 10px;
+    background: rgba(1, 9, 12, 0.78);
+  }
+
+  .badges-output a {
+    display: block;
+    line-height: 0;
+  }
+
+  .badges-output img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
   }
 
   @media (max-width: 900px) {
